@@ -189,9 +189,9 @@ Ch and
         default = true,
     },
     {
-        name = "givemedal_resources",
-        label = "开局送勋章物资包，需要打开能力勋章模组才生效",
-        hover = "包含勋章盒 巧手勋章 伐木勋章 挖矿勋章 暗影魔法工具",
+        name = "unlock_chesspiece_sketch",
+        label = "开局商店解锁三基佬草图",
+        hover = "拒绝搬运，可直接建造三基佬",
         options =   {
                         {description = "否", data = false},
                         {description = "是", data = true},

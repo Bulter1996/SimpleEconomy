@@ -26,12 +26,22 @@ local function secunlocklist(self, unlocklist)
     end
 end
 
-local function ExchangeKV(tablekv)
-    local tablevk = {}
-    for k, v in pairs(tablekv) do
-        tablevk[v] = k
+local function init_unlocklist()
+    local unlocklist = {}
+    -- 开局解锁珍珠
+    if TUNING.unlock_hermit_pearl then unlocklist["hermit_pearl"] = 1 end
+
+    -- 开局解锁天体宝球
+    if TUNING.unlock_moonrockseed then unlocklist["moonrockseed"] = 1 end
+
+    -- 开局解锁三基佬草图
+    if TUNING.unlock_chesspiece_sketch then
+        unlocklist["chesspiece_rook_sketch"] = 1
+        unlocklist["chesspiece_bishop_sketch"] = 1
+        unlocklist["chesspiece_knight_sketch"] = 1
     end
-    return tablevk
+
+    return unlocklist
 end
 
 local seplayerstatus = Class(function(self, inst)
@@ -42,7 +52,7 @@ local seplayerstatus = Class(function(self, inst)
     self.vip = 0                    -- VIP等级
     self.discount = (1-self.level*5/100)^self.vip  -- 折扣计算
     self.slist = {}                 -- 物品列表
-    self.unlocklist = {}            -- 获取过的物品物品列表
+    self.unlocklist = init_unlocklist()            -- 获取过的物品物品列表
     self.precious = {}              -- 珍贵物品列表
     self:preciousbuild()            -- 初始化珍贵物品
     self.alreadyspawn = false       -- 是否已生成初始物品
@@ -149,7 +159,7 @@ function seplayerstatus:OnLoad(data)
     self.day = data.day or 0
 
     -- self.unlocklist = data.unlocklist or {}
-    self.unlocklist = {}
+    self.unlocklist = init_unlocklist()
     if data.unlocklist then
         if type(data.unlocklist) == "string" then
             for item in string.gmatch(data.unlocklist, "([^,]+)") do
@@ -468,17 +478,6 @@ function seplayerstatus:Init(inst)
                 end)
             end
             
-            -- 开局解锁珍珠
-            if TUNING.unlock_hermit_pearl then
-                self.unlocklist["hermit_pearl"] = 1
-                self.unlocklist = self.unlocklist  -- 触发 setter 更新
-            end
-
-            -- 开局解锁天体宝球
-            if TUNING.unlock_moonrockseed then
-                self.unlocklist["moonrockseed"] = 1
-                self.unlocklist = self.unlocklist  -- 触发 setter 更新
-            end
         end
     end)
     

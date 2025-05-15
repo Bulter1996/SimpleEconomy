@@ -30,6 +30,7 @@ TUNING.givefight_resources = GetModConfigData('givefight_resources')   --开局�
 TUNING.givemedal_resources = GetModConfigData('givemedal_resources')   --开局送勋章物资包
 TUNING.unlock_hermit_pearl = GetModConfigData('unlock_hermit_pearl')   --开局商店解锁珍珠
 TUNING.unlock_moonrockseed = GetModConfigData('unlock_moonrockseed')   --开局商店解锁天体宝球
+TUNING.unlock_chesspiece_sketch = GetModConfigData('unlock_chesspiece_sketch')   --开局商店解锁三基佬草图
 TUNING.generate_ft = GetModConfigData('generate_ft')                   --开局生成传送实体
 TUNING.ft_prefab_name = GetModConfigData('ft_prefab_name')             --生成的传送实体名
 TUNING.FIXTWOPRICE = GetModConfigData('fixtwoprice')                   --固定法杖和项链价格

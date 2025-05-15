@@ -744,7 +744,7 @@ function uiseconomy:buildlist(title)
 			self.listslot[i].im.tex2:SetScale(.95, .95, 1)
 		end
 
-		--蓝图和月光龙虾、勋章塑料袋、富贵鱼卵
+		--蓝图和月光龙虾、勋章塑料袋、富贵鱼卵、三基佬草图
 		if list[i].name == "blueprint" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[8])
 		elseif list[i].name == "wobster_moonglass_land" then
@@ -753,6 +753,12 @@ function uiseconomy:buildlist(title)
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[21])
 		elseif list[i].name == "ndnr_roe" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[22])
+		elseif list[i].name == "chesspiece_rook_sketch" then
+			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[24])
+		elseif list[i].name == "chesspiece_bishop_sketch" then
+			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[25])
+		elseif list[i].name == "chesspiece_knight_sketch" then
+			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[26])
 		else
 			self.listslot[i]:SetHoverText(STRINGS.NAMES[string.upper(list[i].name)] or "nil")
 		end

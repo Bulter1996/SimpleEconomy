@@ -43,7 +43,10 @@ STRINGS.SIMPLEECONOMY = {
     [20] = "月光龙虾",
     [21] = "遗失塑料袋",
     [22] = "随机鱼卵",
-    [23] = "刷新 -" .. TUNING.Refresh_Price
+    [23] = "刷新 -" .. TUNING.Refresh_Price,
+    [24] = "战车草图",
+    [25] = "主教草图",
+    [26] = "骑士草图",
 }
 
 STRINGS.STARTPACKAGE = {
