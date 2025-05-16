@@ -25,20 +25,53 @@ function ftgenstatus:SetGenerated()
     self.alreadyspawn = true
 end
 
--- 检查生成位置是否合适（在陆地上且周围没有实体）
-local function IsValidPosition(x, y, z, radius)
-    -- 检查是否在陆地上
+local function is_passable_land(x, y, z, radius)
+    local is_passable_land = true  -- 是否在陆地上
+    -- 检查中心点是否在陆地上
     if not GLOBAL.TheWorld.Map:IsPassableAtPoint(x, y, z) then
+        is_passable_land = false
+    else
+        -- 检查半径范围内的点是否都是陆地
+        local check_points = 8  -- 检查8个方向
+        for i = 1, check_points do
+            local angle = (i - 1) * (2 * math.pi / check_points)
+            local check_x = x + radius * math.cos(angle)
+            local check_z = z + radius * math.sin(angle)
+            
+            if not GLOBAL.TheWorld.Map:IsPassableAtPoint(check_x, y, check_z) then
+                is_passable_land = false
+                break
+            end
+        end
+    end
+    return is_passable_land
+end
+
+local function is_passable_near(x, y, z, radius)
+    local ents = GLOBAL.TheSim:FindEntities(x, y, z, radius)
+    if #ents ~= 0 then
         return false
     end
-    
-    -- 检查周围是否有实体
-    local ents = GLOBAL.TheSim:FindEntities(x, y, z, radius)
-    return #ents == 0
+    return true
+end
+
+-- 检查生成位置是否合适（在陆地上且周围没有实体）
+local function IsValidPosition(x, y, z, radius)
+    local is_valid = false
+
+    local is_passable_land = is_passable_land(x, y, z, radius)  -- 是否在陆地上
+    local is_passable_near = is_passable_near(x, y, z, radius)  -- 周围时候存在其他实体
+
+    if is_passable_land and is_passable_near then
+        is_valid = true
+    end
+
+    return is_valid
 end
 
 -- 随机生成位置并检查时候合适
-local function FindValidPosition(center_x, center_z, min_radius, max_radius, attempts)
+local function FindValidPosition(center_x, center_z, min_radius, max_radius, attempts, check_valid_fn)
+    check_valid_fn = check_valid_fn or IsValidPosition  -- 默认陆地和周围有没实体都要检查
     attempts = attempts or 30  -- 默认尝试30次
     min_radius = min_radius
     max_radius = max_radius
@@ -55,8 +88,8 @@ local function FindValidPosition(center_x, center_z, min_radius, max_radius, att
         local z = center_z + offset_z
         
         -- 检查位置是否合适
-        local check_radius = 2  -- 2个半径内不能有其他实体
-        if IsValidPosition(x, 0, z, 2) then
+        local check_radius = 4  -- 4个半径内不能有其他实体
+        if check_valid_fn(x, 0, z, check_radius) then
             return x, z
         end
     end
@@ -71,7 +104,7 @@ local function GenerateTravelFire(gen_ent_name, world_ft, min_radius, max_radius
     if not GLOBAL.TheWorld.ismastersim then return end
 
     world_ft = world_ft or ftlist.world_ft
-    min_radius = min_radius or 12
+    min_radius = min_radius or 8
     max_radius = max_radius or 16
     repeat_gen = repeat_gen or ftlist.repeat_gen
     special_ent_radius = special_ent_radius or ftlist.special_ent_radius
