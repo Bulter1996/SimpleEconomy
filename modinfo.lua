@@ -53,7 +53,7 @@ Original Author: Chai Chai
 ]]
 
 author = "原作者：柴柴，太空人，巴乐(改)"
-version = "1.0.4"
+version = "1.0.5"
 forumthread = ""
 api_version = 10
 dst_compatible = true
