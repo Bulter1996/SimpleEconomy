@@ -467,7 +467,7 @@ function seplayerstatus:Init(inst)
                 wait_time = wait_time + 2
                 inst:DoTaskInTime(wait_time, function()
                     local medal_resources = {
-                        {prefab = "medal_box", count = 1},              -- 勋章盒
+                        {prefab = "cook_certificate", count = 1},       -- 烹饪勋章
                         {prefab = "handy_test_certificate", count = 1}, -- 巧手考验勋章
                         {prefab = "smallchop_certificate", count = 1},  -- 初级伐木勋章
                         {prefab = "smallminer_certificate", count = 1}, -- 初级矿工勋章
@@ -475,6 +475,9 @@ function seplayerstatus:Init(inst)
                     local gift = WrapperGift(medal_resources)
                     inst.components.inventory:GiveItem(gift, nil, inst:GetPosition())
 
+                    -- 给予勋章盒
+                    local item = SpawnPrefab("medal_box")
+                    inst.components.inventory:GiveItem(item, nil, inst:GetPosition())
                     -- 给予暗影魔法工具
                     -- local item = SpawnPrefab("medal_shadow_tool")
                     -- inst.components.inventory:GiveItem(item, nil, inst:GetPosition())
@@ -522,6 +525,13 @@ function seplayerstatus:Init(inst)
     local unlockitemfn = function(_, data)
         local item_name = data.item.prefab
         -- print("当前监听到人物获取到某个物品，物品名称为--"..item_name)
+
+        -- 如果物品是遗失塑料袋，则商店解锁所有的遗失塑料袋
+        if TUNING.FUNCTIONAL_MEDAL_IS_OPEN and string.match(item_name, "^medal_losswetpouch%d+$") then
+            for i = 1, 7 do
+                self.unlocklist["medal_losswetpouch"..i] = 1
+            end
+        end
         self.unlocklist[item_name] = 1
         self.unlocklist = self.unlocklist  -- 触发 setter 更新
     end

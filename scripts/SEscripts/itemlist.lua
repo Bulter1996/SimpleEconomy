@@ -1146,6 +1146,7 @@ itemlist.selist_resource_xz =
 	{ name = "medal_tribute_symbol", price = 50 }, -- 奉纳符
 	{ name = "medal_loss_treasure_map", price = 50 }, -- 遗失藏宝图
 	{ name = "medal_monster_symbol", price = 50 }, -- 暗影挑战符
+	{ name = "medal_inherit_page", price = 100 }, -- 传承书页
 }
 --珍贵
 itemlist.selist_precious_xz =
@@ -1164,7 +1165,13 @@ itemlist.selist_precious_xz =
 	{ name = "immortal_staff",              price = 16000 },                   -- 不朽法杖
 	{ name = "sanityrock_mace",             price = 2800 },                    -- 方尖锏
 	{ name = "meteor_staff",                price = 2800 },                    -- 流星法杖
-	{ name = "medal_losswetpouch",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋	
+	{ name = "medal_losswetpouch1",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋·池塘	
+	{ name = "medal_losswetpouch2",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋·沼泽	
+	{ name = "medal_losswetpouch3",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋·洞穴	
+	{ name = "medal_losswetpouch4",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋·海洋	
+	{ name = "medal_losswetpouch5",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋·岩浆	
+	{ name = "medal_losswetpouch6",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋·湖泊	
+	{ name = "medal_losswetpouch7",          price = 300,  tex = "wetpouch.tex" }, -- 遗失塑料袋·空间	
 	{ name = "medal_spacetime_lingshi",     price = 1000 },                    -- 时空灵石
 	{ name = "medal_withered_heart",        price = 8000 },                    -- 凋零之心
 	{ name = "medal_withered_royaljelly",   price = 1350 },                    -- 凋零蜂王浆
