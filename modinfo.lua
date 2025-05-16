@@ -11,11 +11,11 @@ Ch and
 经济学mod（自用修改）
 增加了商店售卖的物品随获取进度进行解锁（可设置）
 增加了人物初始物资获取（设置里可关闭，包含草树枝等基本物资）
-增加了传送金塔的生成（设置里可关闭，包含传送实体蓝图）
+增加了传送实体网络的生成（设置里可关闭，包含传送实体蓝图）
 
 以下是原mod地址：https://steamcommunity.com/sharedfiles/filedetails/?id=3016346770
 服主可实时对商店列表增删查改，无需重启。例如:增加物品、修改价格
-物品列表位于你的模组目录下“\3016346770\scripts\SEscripts\itemlist.lua”
+物品列表位于你的模组目录下"3479277919\scripts\SEscripts\itemlist.lua"
 本模组自动适配永不妥协、能力勋章、棱镜、富贵险中求、海难，自动增加对应物品，未开启相应的模组则不会增加相应的物品。
 在原模组简单经济学的基础上做了一些修改。
 可以设置点金法杖一定时间内对同一物品再次分解的倍率，防止短时间内刷钱。
@@ -53,7 +53,7 @@ Original Author: Chai Chai
 ]]
 
 author = "原作者：柴柴，太空人，巴乐(改)"
-version = "1.0.3"
+version = "1.0.4"
 forumthread = ""
 api_version = 10
 dst_compatible = true
@@ -75,6 +75,22 @@ Ch and
                         {description = "简体中文", data = true},
                     },
         default = true,
+    },
+    {
+        name = "shop_hotkey",
+        label = "商店快捷键",
+        hover = "设置打开商店界面的快捷键",
+        options = {
+            {description = "关闭", data = 1},
+            {description = "R", data = 114},
+            {description = "T", data = 116},
+            {description = "Y", data = 121},
+            {description = "U", data = 117},
+            {description = "I", data = 105},
+            {description = "O", data = 111},
+            {description = "P", data = 112},
+        },
+        default = 114,
     },
     {
         name = "updatelist",
@@ -110,6 +126,9 @@ Ch and
                     },
         default = true,
     },
+
+    {name = "Title", label = "", options = {{description = "", data = ""}}, default = ""},
+    {name = "Title", label = "开局物资", options = {{description = "", data = ""}}, default = ""},
     {
         name = "givegoldstaff",
         label = "开局送点金法杖",
@@ -151,7 +170,7 @@ Ch and
     {
         name = "givefight_resources",
         label = "开局送战斗物资包",
-        hover = "包含战斗长矛*1 战斗头盔*1 木甲*1 治疗药膏*3",
+        hover = "包含火腿球棒*1 猪皮头盔*1 木甲*1 治疗药膏*3",
         options =   {
                         {description = "否", data = false},
                         {description = "是", data = true},
@@ -168,10 +187,23 @@ Ch and
                     },
         default = true,
     },
+
+    {name = "Title", label = "", options = {{description = "", data = ""}}, default = ""},
+    {name = "Title", label = "更好的体验", options = {{description = "", data = ""}}, default = ""},
     {
         name = "unlock_hermit_pearl",
         label = "开局商店解锁珍珠",
-        hover = "拒绝奶奶的任务，直接购买珍珠",
+        hover = "拒绝奶奶任务，直接购买珍珠",
+        options =   {
+                        {description = "否", data = false},
+                        {description = "是", data = true},
+                    },
+        default = true,
+    },
+    {
+        name = "unlock_moonstorm_static_item",
+        label = "开局商店解锁约束静电",
+        hover = "拒绝天体任务，直接购买约束静电",
         options =   {
                         {description = "否", data = false},
                         {description = "是", data = true},
@@ -198,6 +230,9 @@ Ch and
                     },
         default = true,
     },
+
+    {name = "Title", label = "", options = {{description = "", data = ""}}, default = ""},
+    {name = "Title", label = "传送网络铺建", options = {{description = "", data = ""}}, default = ""},
     {
         name = "generate_ft",
         label = "是否开局在各个重要地点生成传送点",
@@ -206,17 +241,20 @@ Ch and
                         {description = "否", data = false},
                         {description = "是", data = true},
                     },
-        default = true,
+        default = false,
     },
     {
         name = "ft_prefab_name",
-        label = "生成的传送点实体选择，默认生成木牌，需要开启木牌传送才生效",
+        label = "生成的传送实体选择，默认生成木牌",
         options =   {
-                    {description = "木牌", data = "homesign"},
-                    {description = "懒人传送塔", data = "townportal"},
+                    {description = "木牌", data = "homesign", hover = "需要开启木牌传送才生效"},
+                    {description = "懒人传送塔", data = "townportal", hover = "需要永恒新界模组才生效"},
                     },
         default = "homesign",
     },
+
+    {name = "Title", label = "", options = {{description = "", data = ""}}, default = ""},
+    {name = "Title", label = "价格设置", options = {{description = "", data = ""}}, default = ""},
     {
         name = "fixtwoprice",
         label = "法杖和项链价格固定",
@@ -241,7 +279,7 @@ Ch and
                     {description = "九分之一", data = 9},
                     {description = "十分之一", data = 10},
                     },
-        default = 3,
+        default = 4,
     },
     {
         name = "recyclingprice2",
@@ -260,7 +298,7 @@ Ch and
                     {description = "十五分之一", data = 15},
                     {description = "二十分之一", data = 20},
                     },
-        default = 6,
+        default = 10,
     },
     {
         name = "recovery_time",
@@ -276,7 +314,7 @@ Ch and
                         {description = "300S", data = 300},
                         {description = "480S", data = 480},
                     },
-        default = 60,
+        default = false,
     },
     {
         name = "recovery_t",
@@ -296,24 +334,6 @@ Ch and
                         {description = "100%", data = 1.0},
                     },
         default = 0.5,
-    },
-    {
-        name = "precious_sell",
-        label = "开启全部珍贵品",
-        options =   {
-                        {description = "否", data = false, hover = "商店每三天刷新部分珍贵品"},
-                        {description = "是", data = true, hover = "商店售卖全部珍贵品"},
-                    },
-        default = true,
-    },
-    {
-        name = "only_obtained",
-        label = "仅售卖获取过的商品",
-        options =   {
-                        {description = "否", data = false, hover = "商店售卖所有商品"},
-                        {description = "是", data = true, hover = "商店仅售卖获取过的商品"},
-                    },
-        default = true,
     },
     {
         name = "pricerate",
@@ -382,7 +402,7 @@ Ch and
 						{description = "最大生命值0.5%", data = 0.005},
 						{description = "最大生命值0.1%", data = 0.001},
                     },
-        default = 0.1,
+        default = 0.25,
     },
     {
         name = "deathcd",
@@ -400,7 +420,7 @@ Ch and
                         {description = "300S", data = 300},
                         {description = "480S", data = 480},
                     },
-        default = 60,
+        default = 10,
     },
     {
         name = "coinrate",
@@ -418,7 +438,7 @@ Ch and
                         {description = "90%", data = 0.90},
                         {description = "100%", data = 1.0},
                     },
-        default = 0.1,
+        default = 0.5,
     },
     {
         name = "limitphmod",
@@ -462,8 +482,11 @@ Ch and
                         {description = "能", data = true},
                         {description = "不能", data = false},
                     },
-        default = true,
+        default = false,
     },
+
+    {name = "Title", label = "", options = {{description = "", data = ""}}, default = ""},
+    {name = "Title", label = "模组物品相关", options = {{description = "", data = ""}}, default = ""},
     {
         name = "Functionalswitch",
         label = "加入勋章物品",
@@ -482,7 +505,7 @@ Ch and
                         {description = "卖", data = true},
                         {description = "不", data = false},
                     },
-        default = false,
+        default = true,
     },
     {
         name = "umswitch",
@@ -534,6 +557,27 @@ Ch and
                     },
         default = true,
     },
+
+    {name = "Title", label = "", options = {{description = "", data = ""}}, default = ""},
+    {name = "Title", label = "其他设置", options = {{description = "", data = ""}}, default = ""},
+    {
+        name = "precious_sell",
+        label = "开启全部珍贵品",
+        options =   {
+                        {description = "否", data = false, hover = "商店每三天刷新部分珍贵品"},
+                        {description = "是", data = true, hover = "商店售卖全部珍贵品"},
+                    },
+        default = true,
+    },
+    {
+        name = "only_obtained",
+        label = "仅售卖获取过的商品",
+        options =   {
+                        {description = "否", data = false, hover = "商店售卖所有商品"},
+                        {description = "是", data = true, hover = "商店仅售卖获取过的商品"},
+                    },
+        default = true,
+    },
     {
         name = "Dig",
         label = "挖掘机当铲子",
@@ -541,7 +585,7 @@ Ch and
                         {description = "否", data = false},
                         {description = "是", data = true},
                     },
-        default = false,
+        default = true,
     },
     {
         name = "Hammer",
@@ -550,7 +594,7 @@ Ch and
                         {description = "否", data = false},
                         {description = "是", data = true},
                     },
-        default = false,
+        default = true,
     },
 } or
 {

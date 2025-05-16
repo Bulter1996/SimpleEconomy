@@ -118,6 +118,36 @@ local uiseconomy = Class(Widget, function(self, owner)
 	self.mainui:SetPosition(0, 20, 0)
 	self.mainui:Hide()
 
+	-- 在初始化时设置按键监听用于打开商店
+	local hotkey = TUNING.shop_hotkey or 1
+	if hotkey ~= 1 then
+		local pressed_shieldkey
+		TheInput:AddKeyDownHandler(hotkey, function()
+			-- local active_screen = TheFrontEnd:GetActiveScreen()
+			-- if active_screen and self.owner.HUD and self.owner.HUD.writeablescreen == nil then
+			if pressed_shieldkey then --这个监听只要按着就会不断触发，不想这样设定
+				return
+			end
+			pressed_shieldkey = true
+
+			if self.mainui.shown then
+				-- print("[SimpleEconomy] 关闭商店界面")
+				self:onclose()
+			else
+				-- print("[SimpleEconomy] 打开商店界面")
+				if TUNING.UPDATELIST then
+					SendModRPCToServer(MOD_RPC["SimpleEconomy"]["updatelist"])
+				end
+				self:onopen()
+			end
+
+			-- 添加按键释放监听
+			TheInput:AddKeyUpHandler(hotkey, function()
+				pressed_shieldkey = nil
+			end)
+		end)
+	end
+
 	self.mainui.bg = self.mainui:AddChild(Image("images/sehud/bg.xml", "bg.tex"))
 	self.mainui.bg:SetTint(1, 1, 1, 0.95)
 	self.mainui.bg:SetPosition(0, 45, 0)
@@ -939,7 +969,7 @@ function uiseconomy:buildbutton(title)
 			"precious_act_" .. TUNING.SElan .. ".tex")
 		self.mainui.bg.title:SetTexture("images/sehud/title_precious.xml", "title_precious.tex")
 		self.mainui.buttonprecious.new:Hide()
-		if not TUNING.precious_sell then
+		if not (TUNING.precious_sell or TUNING.only_obtained) then
 			self.mainui.refresh:Show()
 		end
 		--local pb = self.mainui.buttonprecious:GetPosition()

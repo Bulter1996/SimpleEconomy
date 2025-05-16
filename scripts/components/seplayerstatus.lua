@@ -31,6 +31,9 @@ local function init_unlocklist()
     -- 开局解锁珍珠
     if TUNING.unlock_hermit_pearl then unlocklist["hermit_pearl"] = 1 end
 
+    -- 开局解锁约束静电
+    if TUNING.unlock_moonstorm_static_item then unlocklist["moonstorm_static_item"] = 1 end
+
     -- 开局解锁天体宝球
     if TUNING.unlock_moonrockseed then unlocklist["moonrockseed"] = 1 end
 
@@ -446,10 +449,10 @@ function seplayerstatus:Init(inst)
             if TUNING.givefight_resources then
                 wait_time = wait_time + 2
                 inst:DoTaskInTime(wait_time, function()
-                    -- 给予战斗物资包：战斗长矛*1 战斗头盔*1 木甲*1 治疗药膏*3
+                    -- 给予战斗物资包：火腿球棒*1 猪皮头盔*1 木甲*1 治疗药膏*3
                     local fight_resources = {
-                        {prefab = "spear_wathgrithr", count = 1},       -- 战斗长矛
-                        {prefab = "wathgrithrhat", count = 1},          -- 战斗头盔
+                        {prefab = "hambat", count = 1},       -- 火腿球棒
+                        {prefab = "footballhat", count = 1},          -- 猪皮头盔
                         {prefab = "armorwood", count = 1},              -- 木甲
                         {prefab = "healingsalve", count = 3},           -- 治疗药膏
                     }
@@ -459,7 +462,7 @@ function seplayerstatus:Init(inst)
                 end)
             end
             
-            -- 给予勋章物资包，包含勋章盒 巧手考验勋章 初级伐木勋章 初级矿工勋章 暗影魔法工具
+            -- 给予勋章物资包，包含勋章盒 巧手考验勋章 初级伐木勋章 初级矿工勋章
             if TUNING.FUNCTIONAL_MEDAL_IS_OPEN and TUNING.givemedal_resources then
                 wait_time = wait_time + 2
                 inst:DoTaskInTime(wait_time, function()
@@ -472,8 +475,9 @@ function seplayerstatus:Init(inst)
                     local gift = WrapperGift(medal_resources)
                     inst.components.inventory:GiveItem(gift, nil, inst:GetPosition())
 
-                    local item = SpawnPrefab("medal_shadow_tool")
-                    inst.components.inventory:GiveItem(item, nil, inst:GetPosition())
+                    -- 给予暗影魔法工具
+                    -- local item = SpawnPrefab("medal_shadow_tool")
+                    -- inst.components.inventory:GiveItem(item, nil, inst:GetPosition())
                     inst.components.talker:Say(STRINGS.STARTPACKAGE[4])
                 end)
             end
