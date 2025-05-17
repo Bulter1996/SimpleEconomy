@@ -53,7 +53,7 @@ Original Author: Chai Chai
 ]]
 
 author = "原作者：柴柴，太空人，巴乐(改)"
-version = "1.0.5"
+version = "1.0.7"
 forumthread = ""
 api_version = 10
 dst_compatible = true
@@ -510,6 +510,16 @@ Ch and
     {
         name = "umswitch",
         label = "加入永不妥协物品",
+        hover = "手动开关,未开启模组则不管",
+        options =   {
+                        {description = "开", data = true},
+                        {description = "关", data = false},
+                    },
+        default = true,
+    },
+    {
+        name = "The_New_Constant_SWITCH",
+        label = "加入永恒新界物品",
         hover = "手动开关,未开启模组则不管",
         options =   {
                         {description = "开", data = true},

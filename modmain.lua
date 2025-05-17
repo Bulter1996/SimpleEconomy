@@ -15,6 +15,7 @@ TUNING.PRICERATErecoverytime = GetModConfigData('recovery_time')       --物品�
 TUNING.precious_sell = GetModConfigData('precious_sell')               --珍贵物品全开开关
 TUNING.only_obtained = GetModConfigData('only_obtained')               --仅售卖已获取的物品开关
 TUNING.Legionswitch = GetModConfigData('Legionswitch')                 --棱镜物品手动开关
+TUNING.The_New_Constant_SWITCH = GetModConfigData('The_New_Constant_SWITCH') --永恒新界物品开关
 TUNING.Legionsell = GetModConfigData('Legionsell')                     --棱镜唯一物品开关
 TUNING.NDNR_SWITCH = GetModConfigData('ndnrswitch')                    --富贵险中求物品开关
 TUNING.Island_switch = GetModConfigData('Island_switch')               --海难物品开关

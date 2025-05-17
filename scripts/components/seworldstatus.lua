@@ -78,6 +78,16 @@ function seworldstatus:makelist()
 		end
 	end
 
+	--是否启用永恒新界
+	if TUNING.The_New_Constant and TUNING.The_New_Constant_SWITCH then
+		MergeTables(itemlist.selist_food_thenc, itemlist.selist_food)
+		MergeTables(itemlist.selist_cloth_thenc, itemlist.selist_cloth)
+		MergeTables(itemlist.selist_smithing_thenc, itemlist.selist_smithing)
+		MergeTables(itemlist.selist_resource_thenc, itemlist.selist_resource)
+		MergeTables(itemlist.selist_blueprint_thenc, itemlist.selist_blueprint)
+		MergeTables(itemlist.selist_precious_thenc, itemlist.selist_precious)
+	end
+
 	if TUNING.NDNR_ACTIVE and TUNING.NDNR_SWITCH then --是否启用富贵险中求
 		if TUNING.autoLegion then
 			-- 遍历表，查找并删除目标数据，这里处理两个模组重复的药酒

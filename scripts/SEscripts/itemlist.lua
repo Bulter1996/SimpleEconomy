@@ -1409,6 +1409,60 @@ itemlist.selist_blueprint_lj =
 	{ name = "siving_feather_real_blueprint",    price = 2000 }, --子圭·翰	
 }
 
+-- 永恒新界
+itemlist.selist_food_thenc = {
+	{ name = "newcs_dragoonheart",          price = 200},                 -- 龙心
+}
+
+itemlist.selist_cloth_thenc = {
+	{ name = "antidote",             price = nil },               -- 万能解毒剂
+	{ name = "aurumite_kit",         price = nil },               -- 耀金修补套件
+
+}
+
+itemlist.selist_smithing_thenc = {
+	{ name = "obsidianhat", price = nil, tex = "dragonheadhat.tex"},   --龙鳞头盔
+	{ name = "newcs_armorobsidian",       price = nil },               --黑曜石护甲
+	{ name = "newcs_spear_obsidian",      price = nil },               --黑曜石长矛
+	{ name = "newcs_axeobsidian",         price = nil },               --黑曜石斧
+	{ name = "newcs_volcanostaff",        price = nil },               --阳炎之怒
+	{ name = "dreadsword",                price = nil },               --绝望石剑
+	{ name = "sword_lunarblast",          price = nil },               --真·亮茄剑
+	{ name = "staff_lunarblast",          price = nil },               --真·亮茄杖
+	{ name = "true_voidcloth_scythe",     price = nil },               --死亡收割
+	{ name = "laser_generator",           price = nil },               --装甲重拳
+	{ name = "laser_cannon", price = nil, tex = "laser_generator.tex" },  --激光发射器
+	{ name = "iokheira",                  price = nil },               --月之矢
+	{ name = "armorabyss",                price = nil },               --漩涡斗篷
+	{ name = "orichalhat",                price = nil },               --耀金头盔
+	{ name = "armororichal",             price = nil },               --耀金盔甲
+	{ name = "sword_ancient",             price = 30000 },             --永恒之锋
+
+}
+itemlist.selist_resource_thenc = {
+	{ name = "newcs_obsidian",             price = 100 },               --黑曜石
+	{ name = "aurumite",              price = 200 },               -- 耀金
+	{ name = "cs_infused_iron",      price = 500 },               --永恒石
+	
+}
+
+itemlist.selist_blueprint_thenc = {
+	{ name = "lunarlight_blueprint",   price = 2000 },           --辉煌灯柱
+}
+
+itemlist.selist_precious_thenc = {
+	{ name = "demon_soul",           price = 300 },                -- 恶魔之魂
+	{ name = "cs_waterdrop",         price = 1000 },               -- 永恒之水
+	{ name = "shadow_soul",          price = 1000 },               -- 暗影之魂
+	{ name = "iron_soul",            price = 2000 },               -- 钢铁之魂
+	{ name = "insight_soul",         price = 2000 },               -- 视域之魂
+	{ name = "constant_medal", price = nil, tex = "quagmire_coin3.tex" },  -- 不死令牌
+	{ name = "cs_void_bag",          price = nil },                -- 虚空袋
+	{ name = "maze_key",    price = 100},               -- 迷宫钥匙
+	{ name = "void_key",             price = 500, atl = "images/newcs_minimap.xml"},  -- 位面钥匙
+	{ name = "planar_key",           price = 500, atl = "images/newcs_minimap.xml"},  -- 虚空钥匙
+
+}
 
 itemlist.selist_food_ndnr = {
 	{ name = "ndnr_chinesefood",          price = 113 },                                       -- 家常菜

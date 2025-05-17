@@ -75,6 +75,7 @@ end
 TUNING.autoLegion = CheckMod("[DST] Legion") or CheckMod("[DST] 棱镜")
 TUNING.UNCOMPROMISING_MODE = CheckMod("󰀕 Uncompromising Mode")
 TUNING.Island_Adventures_se = CheckMod("Island Adventures - Shipwrecked") or CheckMod("岛屿冒险")
+TUNING.The_New_Constant = CheckMod("The New Constant") or CheckMod("永恒新界")
 
 local creaturesdeath = GetModConfigData('creaturesdeath') --打怪开关
 local deathcd = GetModConfigData('deathcd')               --打怪的cd
