@@ -622,6 +622,7 @@ itemlist.selist_precious =
 	{ name = "chesspiece_rook_sketch", tex = "sketch.tex", price = 200 }, --战车草图
 	{ name = "chesspiece_bishop_sketch", tex = "sketch.tex", price = 200 }, --主教草图
 	{ name = "chesspiece_knight_sketch", tex = "sketch.tex", price = 200 }, --骑士草图
+	{ name = "chesspiece_guardianphase3_sketch", tex = "sketch.tex", price = 200 }, --天体英雄草图
 	--巨鹿相关
 	{ name = "deerclops_eyeball",               price = 1600 }, --眼球
 	{ name = "eyebrellahat",                    price = nil }, --眼球伞

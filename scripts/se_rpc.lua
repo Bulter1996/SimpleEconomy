@@ -85,6 +85,8 @@ AddModRPCHandler("SimpleEconomy", "sebuy", function(player, iname, more, lastski
                     end
                 end
                 local item = GLOBAL.SpawnPrefab(iiname, lastskin, nil, player.userid)
+                -- 如果是月亮宝球，则自动升级
+                if iname == "moonrockseed" then item:DoUpgrade() end
                 player.components.inventory:GiveItem(item, nil, player:GetPosition())
                 --用于解决稀有蓝图重复的问题
                 for _, blueprint in ipairs(TUNING.selist_blueprint) do

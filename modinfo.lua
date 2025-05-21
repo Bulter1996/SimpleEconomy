@@ -53,7 +53,7 @@ Original Author: Chai Chai
 ]]
 
 author = "原作者：柴柴，太空人，巴乐(改)"
-version = "1.0.7"
+version = "1.0.8"
 forumthread = ""
 api_version = 10
 dst_compatible = true
@@ -201,16 +201,6 @@ Ch and
         default = true,
     },
     {
-        name = "unlock_moonstorm_static_item",
-        label = "开局商店解锁约束静电",
-        hover = "拒绝天体任务，直接购买约束静电",
-        options =   {
-                        {description = "否", data = false},
-                        {description = "是", data = true},
-                    },
-        default = true,
-    },
-    {
         name = "unlock_moonrockseed",
         label = "开局商店解锁天体宝球",
         hover = "拒绝运气，可直接购买宝球",
@@ -222,8 +212,8 @@ Ch and
     },
     {
         name = "unlock_chesspiece_sketch",
-        label = "开局商店解锁三基佬草图",
-        hover = "拒绝搬运，可直接建造三基佬",
+        label = "开局商店解锁三基佬和天体英雄草图",
+        hover = "拒绝搬运，可直接建造三基佬和天体英雄雕像",
         options =   {
                         {description = "否", data = false},
                         {description = "是", data = true},

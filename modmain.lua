@@ -31,7 +31,6 @@ TUNING.giverocks_resources = GetModConfigData('giverocks_resources')   --开局�
 TUNING.givefight_resources = GetModConfigData('givefight_resources')   --开局送战斗物资包
 TUNING.givemedal_resources = GetModConfigData('givemedal_resources')   --开局送勋章物资包
 TUNING.unlock_hermit_pearl = GetModConfigData('unlock_hermit_pearl')   --开局商店解锁珍珠
-TUNING.unlock_moonstorm_static_item = GetModConfigData('unlock_moonstorm_static_item')   --开局商店解锁约束静电
 TUNING.unlock_moonrockseed = GetModConfigData('unlock_moonrockseed')   --开局商店解锁天体宝球
 TUNING.unlock_chesspiece_sketch = GetModConfigData('unlock_chesspiece_sketch')   --开局商店解锁三基佬草图
 TUNING.generate_ft = GetModConfigData('generate_ft')                   --开局生成传送实体
@@ -44,3 +43,6 @@ TUNING.Refresh_Price = 300 * TUNING.PRICERATE                          --刷新�
 modimport("scripts/se_locadsource.lua")                                --加载资源
 modimport("scripts/se_rpc.lua")                                        --主客机通信
 modimport("scripts/se_functionse.lua")                                 --各项函数
+modimport("postinit/alterguardian_phase3_modify.lua")                  --初始化函数
+modimport("postinit/chesspiece_guardianphase3_modify.lua")             --初始化函数
+

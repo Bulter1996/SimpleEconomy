@@ -31,17 +31,15 @@ local function init_unlocklist()
     -- 开局解锁珍珠
     if TUNING.unlock_hermit_pearl then unlocklist["hermit_pearl"] = 1 end
 
-    -- 开局解锁约束静电
-    if TUNING.unlock_moonstorm_static_item then unlocklist["moonstorm_static_item"] = 1 end
-
     -- 开局解锁天体宝球
     if TUNING.unlock_moonrockseed then unlocklist["moonrockseed"] = 1 end
 
-    -- 开局解锁三基佬草图
+    -- 开局解锁三基佬草图和天体英雄草图
     if TUNING.unlock_chesspiece_sketch then
         unlocklist["chesspiece_rook_sketch"] = 1
         unlocklist["chesspiece_bishop_sketch"] = 1
         unlocklist["chesspiece_knight_sketch"] = 1
+        unlocklist["chesspiece_guardianphase3_sketch"] = 1
     end
 
     return unlocklist
@@ -535,8 +533,12 @@ function seplayerstatus:Init(inst)
         self.unlocklist[item_name] = 1
         self.unlocklist = self.unlocklist  -- 触发 setter 更新
     end
+    
+
+    -- 监听物品栏变化
     inst:ListenForEvent("itemget", unlockitemfn)
     inst:ListenForEvent("equip", unlockitemfn)
+    inst:ListenForEvent("gotnewitem", unlockitemfn)
 end
 
 return seplayerstatus

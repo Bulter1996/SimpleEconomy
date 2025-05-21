@@ -47,13 +47,14 @@ STRINGS.SIMPLEECONOMY = {
     [24] = "战车草图",
     [25] = "主教草图",
     [26] = "骑士草图",
-    [27] = "遗失塑料袋·池塘",  -- medal_losswetpouch1
-    [28] = "遗失塑料袋·沼泽",  -- medal_losswetpouch2
-    [29] = "遗失塑料袋·洞穴",  -- medal_losswetpouch3
-    [30] = "遗失塑料袋·海洋",  -- medal_losswetpouch4
-    [31] = "遗失塑料袋·岩浆",  -- medal_losswetpouch5
-    [32] = "遗失塑料袋·湖泊",  -- medal_losswetpouch6
-    [33] = "遗失塑料袋·空间",  -- medal_losswetpouch7
+    [27] = "天体英雄草图",
+    [28] = "遗失塑料袋·池塘",  -- medal_losswetpouch1
+    [29] = "遗失塑料袋·沼泽",  -- medal_losswetpouch2
+    [30] = "遗失塑料袋·洞穴",  -- medal_losswetpouch3
+    [31] = "遗失塑料袋·海洋",  -- medal_losswetpouch4
+    [32] = "遗失塑料袋·岩浆",  -- medal_losswetpouch5
+    [33] = "遗失塑料袋·湖泊",  -- medal_losswetpouch6
+    [34] = "遗失塑料袋·空间",  -- medal_losswetpouch7
 }
 
 STRINGS.STARTPACKAGE = {

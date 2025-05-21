@@ -789,20 +789,22 @@ function uiseconomy:buildlist(title)
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[25])
 		elseif list[i].name == "chesspiece_knight_sketch" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[26])
-		elseif list[i].name == "medal_losswetpouch1" then
+		elseif list[i].name == "chesspiece_guardianphase3_sketch" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[27])
-		elseif list[i].name == "medal_losswetpouch2" then
+		elseif list[i].name == "medal_losswetpouch1" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[28])
-		elseif list[i].name == "medal_losswetpouch3" then
+		elseif list[i].name == "medal_losswetpouch2" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[29])
-		elseif list[i].name == "medal_losswetpouch4" then
+		elseif list[i].name == "medal_losswetpouch3" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[30])
-		elseif list[i].name == "medal_losswetpouch5" then
+		elseif list[i].name == "medal_losswetpouch4" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[31])
-		elseif list[i].name == "medal_losswetpouch6" then
+		elseif list[i].name == "medal_losswetpouch5" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[32])
-		elseif list[i].name == "medal_losswetpouch7" then
+		elseif list[i].name == "medal_losswetpouch6" then
 			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[33])
+		elseif list[i].name == "medal_losswetpouch7" then
+			self.listslot[i]:SetHoverText(STRINGS.SIMPLEECONOMY[34])
 
 		else
 			self.listslot[i]:SetHoverText(STRINGS.NAMES[string.upper(list[i].name)] or "nil")
